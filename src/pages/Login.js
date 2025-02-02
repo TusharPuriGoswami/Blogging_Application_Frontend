@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // Font Awesome Icons
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Button, Card, CardBody, CardHeader, Col, Container, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import { doLogin } from "../auth";
 import Base from "../components/Base";
+import userContext from "../context/userContext";
 import { loginUser } from "../services/user-service";
 
 const Login=()=>{
+
+  const userContextData=useContext(userContext);
 
   const navigate=useNavigate()
 
@@ -66,6 +69,13 @@ const Login=()=>{
       //save the data to LocalStorage
       doLogin(data,()=>{
         console.log("Login Detail saved to local storage")
+
+        userContextData.setUser({
+          data: data,
+          login: true
+        }
+          
+        )
         //redirect to user dashboard
         navigate("/user/dashboard")
       });
