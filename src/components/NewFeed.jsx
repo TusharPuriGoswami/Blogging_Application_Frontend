@@ -63,11 +63,11 @@ function NewFeed() {
     };
 
     function deletePost(post) {
-        console.log("deletePost function called with:", post); // Debugging log
+       // console.log("deletePost function called with:", post); // Debugging log
     
         deletePostService(post.postId)
             .then(res => {
-                console.log("Delete API response:", res);
+              //  console.log("Delete API response:", res);
                 toast.success("Post is deleted!!");
     
                 // ✅ Correct filtering to remove the deleted post
@@ -78,14 +78,14 @@ function NewFeed() {
                 }));
             })
             .catch(error => {
-                console.log("Delete API error:", error);
+               // console.log("Delete API error:", error);
                 toast.error("Error in deleting Post!!");
             });
     }
     
 
     const changePageInfinite=()=>{
-        console.log("page Changed!!");
+       // console.log("page Changed!!");
         (setCurrentPage(currentPage+1))
         
     }
